@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEAL Дневник будущего</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #e0f7fa;
+            color: #004d40;
+        }
+        .header {
+            padding: 20px;
+            background-color: #12a2c6;
+            color: white;
+        }
+        .news, .awards {
+            margin: 20px 0;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .award-icon {
+            font-size: 24px;
+            margin-right: 10px;
+            color: #ffab00; 
+        }
+        h1, h2 {
+            font-family: 'Arial', sans-serif; 
+        }
+        .btn-primary {
+            background-color: #0288d1; 
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0277bd; 
+        }
+        .nav-link {
+            color: #ffffff;    
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header d-flex justify-content-between align-items-center">
+        <div class="logo">
+            <h1> SEAL <i class="fa-solid fa-otter"></i> </h1>
+        </div>
+        <nav class="nav">
+            <a class="nav-link active" href="index.html">Главная <i class="fa-solid fa-bars"></i></a>
+            <a class="nav-link" href="homework.html">Домашка <i class="fa-solid fa-book"></i></a>
+            <a class="nav-link" href="profile.html">Настройки <i class="fas fa-cog"></i></a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-6 news">
+                <h2>Последние новости</h2>
+                <div class="list-group">
+                    <div class="list-group-item">
+                        <h5>Обновление системы</h5>
+                        <p>Скоро будет доступна новая версия системы, которая улучшит пользовательский опыт и добавит новые функции.</p>
+                    </div>
+                    <div class="list-group-item">
+                        <h5>Конкурс на лучший проект</h5>
+                        <p>Не упустите шанс участвовать в конкурсе! Прием заявок открыт до 15.02.2025.</p>
+                    </div>
+                    <div class="list-group-item">
+                        <h5>Вебинар по новым функциям</h5>
+                        <p>Запланирован вебинар, на котором мы подробно расскажем о новых функциях системы. Дата: 20.02.2025.</p>
+                    </div>
+                    <div class="list-group-item">
+                        <h5>Семинар по безопасности</h5>
+                        <p>Узнайте о лучших практиках безопасности на семинаре, который состоится 25.02.2025.</p>
+                    </div>
+                    <div class="list-group-item">
+                        <h5>Новый курс по программированию</h5>
+                        <p>Начало нового курса по программированию запланировано на 01.03.2025. Присоединяйтесь!</p>
+                    </div>
+                </div>
+                <button class="btn btn-primary mt-3" data-toggle="modal" data-target="#newsModal">Открыть</button>
+            </div>
+
+            <div class="col-md-6 awards">
+                <h2>Мои награды</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="award-icon"><i class="fas fa-trophy"></i></span>
+                        Лучшая работа года - Дата: 01.01.2025 - Количество: 1. Эта награда подтверждает выдающиеся достижения в проекте.
+                    </li>
+                    <li class="list-group-item">
+                        <span class="award-icon"><i class="fas fa-trophy"></i></span>
+                        Награда за инновации - Дата: 02.01.2025 - Количество: 2. Признание за внедрение передовых идей.
+                    </li>
+                    <li class="list-group-item">
+                        <span class="award-icon"><i class="fas fa-trophy"></i></span>
+                        Приз зрительских симпатий - Дата: 03.01.2025 - Количество: 3. Награда, выбранная голосованием участников.
+                    </li>
+                    <li class="list-group-item">
+                        <span class="award-icon"><i class="fas fa-trophy"></i></span>
+                        Награда за лучший проект - Дата: 04.01.2025 - Количество: 1. За выдающиеся результаты в реализации проекта.
+                    </li>
+                    <li class="list-group-item">
+                        <span class="award-icon"><i class="fas fa-trophy"></i></span>
+                        Награда за достижения в обучении - Дата: 05.01.2025 - Количество: 2. Признание за успехи в образовательных инициативах.
+                    </li>
+                </ul>
+                <button class="btn btn-primary mt-3" data-toggle="modal" data-target="#infoModal">Открыть</button>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Модальное окно для новостей -->
+    <div class="modal fade" id="newsModal" tabindex="-1" role="dialog" aria-labelledby="newsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newsModalLabel">Последние новости</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <h5>Обновление системы</h5>
+                            <p>Скоро будет доступна новая версия системы, которая улучшит пользовательский опыт и добавит новые функции.</p>
+                        </div>
+                        <div class="list-group-item">
+                            <h5>Конкурс на лучший проект</h5>
+                            <p>Не упустите шанс участвовать в конкурсе! Прием заявок открыт до 15.02.2025.</p>
+                        </div>
+                        <div class="list-group-item">
+                            <h5>Вебинар по новым функциям</h5>
+                            <p>Запланирован вебинар, на котором мы подробно расскажем о новых функциях системы. Дата: 20.02.2025.</p>
+                        </div>
+                        <div class="list-group-item">
+                            <h5>Семинар по безопасности</h5>
+                            <p>Узнайте о лучших практиках безопасности на семинаре, который состоится 25.02.2025.</p>
+                        </div>
+                        <div class="list-group-item">
+                            <h5>Новый курс по программированию</h5>
+                            <p>Начало нового курса по программированию запланировано на 01.03.2025. Присоединяйтесь!</p>
+                        </div>
+                        <div class="list-group-item">
+                            <h5>Работа с новыми технологиями</h5>
+                            <p>Мы начинаем внедрение новых технологий в процесс обучения. Подробности скоро.</p>
+                        </div>
+                        <div class="list-group-item">
+                            <h5>Обсуждение изменений в расписании</h5>
+                            <p>Изменения в расписании будут обсуждаться на открытом заседании 10.02.2025.</p>
+                        </div>
+                        <div class="list-group-item">
+                            <h5>Запуск нового блога</h5>
+                            <p>Скоро стартует новый блог, посвящённый образовательным инициативам. Следите за обновлениями!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для наград -->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="infoModalLabel">Мои награды</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="award-icon"><i class="fas fa-trophy"></i></span>
+                            Лучшая работа года - Дата: 01.01.2025 - Количество: 1. Эта награда подтверждает выдающиеся достижения в проекте.
+                        </li>
+                        <li class="list-group-item">
+                            <span class="award-icon"><i class="fas fa-trophy"></i></span>
+                            Награда за инновации - Дата: 02.01.2025 - Количество: 2. Признание за внедрение передовых идей.
+                        </li>
+                        <li class="list-group-item">
+                            <span class="award-icon"><i class="fas fa-trophy"></i></span>
+                            Приз зрительских симпатий - Дата: 03.01.2025 - Количество: 3. Награда, выбранная голосованием участников.
+                        </li>
+                        <li class="list-group-item">
+                            <span class="award-icon"><i class="fas fa-trophy"></i></span>
+                            Награда за лучший проект - Дата: 04.01.2025 - Количество: 1. За выдающиеся результаты в реализации проекта.
+                        </li>
+                        <li class="list-group-item">
+                            <span class="award-icon"><i class="fas fa-trophy"></i></span>
+                            Награда за достижения в обучении - Дата: 05.01.2025 - Количество: 2. Признание за успехи в образовательных инициативах.
+                        </li>
+                        <li class="list-group-item">
+                            <span class="award-icon"><i class="fas fa-trophy"></i></span>
+                            Награда за командную работу - Дата: 06.01.2025 - Количество: 3. За отличное взаимодействие в команде.
+                        </li>
+                        <li class="list-group-item">
+                            <span class="award-icon"><i class="fas fa-trophy"></i></span>
+                            Награда за устойчивое развитие - Дата: 07.01.2025 - Количество: 1. За вклад в устойчивое развитие и экологические инициативы.
+                        </li>
+                        <li class="list-group-item">
+                            <span class="award-icon"><i class="fas fa-trophy"></i></span>
+                            Награда за лидерство - Дата: 08.01.2025 - Количество: 2. За выдающиеся лидерские качества и управление проектами.
+                        </li>
+                        <li class="list-group-item">
+                            <span class="award-icon"><i class="fas fa-trophy"></i></span>
+                            Награда за лучший проект в команде - Дата: 09.01.2025 - Количество: 1. За выдающиеся совместные достижения.
+                        </li>
+                        <li class="list-group-item">
+                            <span class="award-icon"><i class="fas fa-trophy"></i></span>
+                            Награда за активное участие - Дата: 10.01.2025 - Количество: 3. За активное участие в мероприятиях.
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

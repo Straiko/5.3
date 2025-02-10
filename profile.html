@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEAL Дневник будущего - Профиль пользователя</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #e0f7fa;
+            color: #004d40;
+        }
+        .header {
+            padding: 20px;
+            background-color: #12a2c6;
+            color: white;
+        }
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        .form-section {
+            margin: 20px 0;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #0288d1;
+        }
+        .btn-primary:hover {
+            background-color: #0277bd;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header d-flex justify-content-between align-items-center">
+        <div class="logo">
+            <h1> SEAL <i class="fa-solid fa-otter"></i> </h1>
+        </div>
+        <nav class="nav">
+            <a class="nav-link" href="index.html">Главная <i class="fa-solid fa-bars"></i></a>
+            <a class="nav-link" href="homework.html">Домашка <i class="fa-solid fa-book"></i></a>
+            <a class="nav-link active" href="#">Настройки <i class="fas fa-cog"></i></a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="form-section text-center">
+            <h2>Профиль пользователя</h2>
+            <img src="ava/default-profile.png" alt="Профиль" class="profile-image" id="profileImage">
+            <select id="avatarSelect" class="form-control" onchange="changeAvatar()">
+                <option value="default-profile.png">Выберите аватар</option>
+                <option value="avatar1.png">Аватар 1</option>
+                <option value="avatar2.png">Аватар 2</option>
+                <option value="avatar3.png">Аватар 3</option>
+                <option value="avatar4.png">Аватар 4</option>
+                <option value="avatar5.png">Аватар 5</option>
+            </select>
+            <input type="file" id="profileImageUpload" style="display: none;" onchange="previewImage(event)">
+        </div>
+
+        <div class="form-section">
+            <h3>Личные данные</h3>
+            <form id="userDataForm" onsubmit="saveData(event)">
+                <div class="form-group">
+                    <label for="firstName">Имя</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="Введите имя" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Фамилия</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Введите фамилию" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Почта</label>
+                    <input type="email" class="form-control" id="email" placeholder="Введите почту" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Номер телефона</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="Введите номер телефона" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Адрес</label>
+                    <input type="text" class="form-control" id="address" placeholder="Введите адрес" required>
+                </div>
+                <div class="form-group">
+                    <label for="socialLink">Ссылка на социальную сеть</label>
+                    <input type="url" class="form-control" id="socialLink" placeholder="Введите ссылку" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+            </form>
+        </div>
+
+        <div class="form-section">
+            <h3>Изменение пароля</h3>
+            <form>
+                <div class="form-group">
+                    <label for="currentPassword">Текущий пароль</label>
+                    <input type="password" class="form-control" id="currentPassword" placeholder="Введите текущий пароль" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">Новый пароль</label>
+                    <input type="password" class="form-control" id="newPassword" placeholder="Введите новый пароль" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Подтверждение пароля</label>
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Подтвердите новый пароль" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Сменить пароль</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function changeAvatar() {
+            const select = document.getElementById('avatarSelect');
+            const image = document.getElementById('profileImage');
+            const selectedAvatar = select.value;
+            image.src = `ava/${selectedAvatar}`;
+            localStorage.setItem('selectedAvatar', selectedAvatar); // Сохраняем выбранный аватар
+        }
+
+        function previewImage(event) {
+            const image = document.getElementById('profileImage');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        }
+
+        function saveData(event) {
+            event.preventDefault(); // Предотвращаем отправку формы
+
+            // Получаем значения из полей формы
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const socialLink = document.getElementById('socialLink').value;
+
+            // Сохраняем данные в localStorage
+            localStorage.setItem('firstName', firstName);
+            localStorage.setItem('lastName', lastName);
+            localStorage.setItem('email', email);
+            localStorage.setItem('phone', phone);
+            localStorage.setItem('address', address);
+            localStorage.setItem('socialLink', socialLink);
+
+            alert('Данные успешно сохранены!');
+        }
+
+        // Заполнение формы данными из localStorage при загрузке страницы
+        window.onload = function() {
+            document.getElementById('firstName').value = localStorage.getItem('firstName') || '';
+            document.getElementById('lastName').value = localStorage.getItem('lastName') || '';
+            document.getElementById('email').value = localStorage.getItem('email') || '';
+            document.getElementById('phone').value = localStorage.getItem('phone') || '';
+            document.getElementById('address').value = localStorage.getItem('address') || '';
+            document.getElementById('socialLink').value = localStorage.getItem('socialLink') || '';
+
+            // Загружаем выбранный аватар
+            const selectedAvatar = localStorage.getItem('selectedAvatar') || 'default-profile.png';
+            document.getElementById('avatarSelect').value = selectedAvatar;
+            document.getElementById('profileImage').src = `ava/${selectedAvatar}`;
+        };
+    </script>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
